@@ -27,4 +27,4 @@ def get_quote():
   quote = json_data[0]['q'] + " -" + json_data[0]['a']
   return(quote)
 
-client.run(('token'))
+client.run(('tokens'))
