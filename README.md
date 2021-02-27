@@ -11,7 +11,7 @@ Judging Criteria:
      Environmental: how the idea impacts the environment
  
 Tech Stack:
-Flutter, CockroachDB, Figma
+Flutter, CockroachDB, Figma, Python
      
 Features:
 - Taking pictures (from any angle/light) and identify type of waste
