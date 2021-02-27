@@ -14,8 +14,17 @@ async def on_message(message):
   if message.author == client.user:
     return
 
+  if message.content.startswith('$hello'):
+    await message.channel.send("Hello World!")
+
   if message.content.startswith('$inspire'):
     quote = get_quote()
     await message.channel.send(quote)
 
-client.run(os.getenv('ODE1MzQ4MjcxNjk4MjgwNDQ4.YDrGQA.LgFBNLym7yuExLvCLwlnyAc1REY'))
+def get_quote():
+  response = requests.get("https://zenquotes.io/api/random")
+  json_data = json.loads(response.text)
+  quote = json_data[0]['q'] + " -" + json_data[0]['a']
+  return(quote)
+
+client.run(('token'))
