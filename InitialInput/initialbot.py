@@ -34,13 +34,16 @@ async def on_message(message):
 async def on_message(message):
     if message.content.startswith('!startofweek'):
         channel = message.channel
-        await channel.send('Enter Day of Exam (If none enter zero): ')
-
+        # await channel.send('Enter Day of Exam (If none enter zero): ')
+        val = message.content
+        newval = val[13:val.find(',')]
+        assessment = val[val.find(','):] 
         def check(m):
-            return m.content == 'hello' and m.channel == channel
-
+            return m.content == 'Append' and m.channel == channel
+        print(val)
         examDate = await client.wait_for('message', check=check)
-        await message.channel.send(examDate)
+        output_list = [newval, assessment]
+        await message.channel.send(output_list)
 
 
 
@@ -60,5 +63,5 @@ def get_schedule():
     print('Datetime is ', dayInput)
   return dayInput
 
-client.run(('tokens'))
+client.run(("tokens"))
 
