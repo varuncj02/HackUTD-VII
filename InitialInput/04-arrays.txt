@@ -1,0 +1,86 @@
+Lecture Notes on
+Arrays
+15-122: Principles of Imperative Computation
+Frank Pfenning, André Platzer
+Lecture 4
+September 4, 2014
+
+Introduction
+
+So far we have seen how to process primitive data like integers in imperative programs. That is useful, but certainly not sufficient to handle bigger
+amounts of data. In many cases we need aggregate data structures which
+contain other data. A common data structure, in particular in imperative
+programming languages, is that of an array. An array can be used to store
+and process a fixed number of data elements that all have the same type.
+We will also take a first detailed look at the issue of program safety.
+A program is safe if it will execute without exceptional conditions which
+would cause its execution to abort. So far, only division and modulus are
+potentially unsafe operations, since division or modulus by 0 is defined
+as a runtime error.1 Trying to access an array element for which no space
+has been allocated is a second form of runtime error. Array accesses are
+therefore potentially unsafe operations and must be proved safe.
+With respect to our learning goals we will look at the following notions.
+Computational Thinking: Developing contracts that establish the safety
+of imperative programs.
+
+In lecture, we only discussed a smaller example of programming with
+arrays, so some of the material here is a slightly more complex illustration
+of how to use for loops and loop invariants when working with arrays.
+
+Using Arrays
+
+When t is a type, then t[] is the type of an array with elements of type t.
+Note that t is arbitrary: we can have an array of integers (int[]), and an
+array of booleans (bool[]) or an array of arrays of characters (char[][]).
+This syntax for the type of arrays is like Java, but is a minor departure from
+C, as we will see later in class.
+Each array has a fixed size, and it must be explicitly allocated using the
+expression alloc_array(t, n). Here t is the type of the array elements,
+and n is their number. 
+
+With this operation, C0 will reserve a piece of memory with n elements, each having type t.
+--> int[] A = alloc_array(int, 10);
+A is 0x603A50 (int[] with 10 elements)
+-->
+
+The result may be surprising: A is an array of integers with 10 elements
+(obvious), but what does it mean to say A is 0xECE2FFF0 here? As we discussed in the lecture on integers, variables can only hold values of a small
+fixed size, the word size of the machine. An array of 10 integers would be
+10 times this size, so we cannot hold it directly in the variable A. Instead,
+the variable A holds the address in memory where the actual array elements
+are stored. In this case, the address happens to be 0xECE2FFF0 (incidentally
+presented in hexadecimal notation), but there is no guarantee that the next
+time you run coin you will get the same address. Fortunately, this is okay
+because you cannot actually ever do anything directly with this address as
+a number and never need to either. Instead you access the array elements
+using the syntax A[i] where 0 ≤ i < n, where n is the length of the array.
+That is, A[0] will give you element 0 of the array, A[1] will be element 1,
+and so on. We say that arrays are zero-based because elements are numbered
+starting at 0. 
+
+--> A[10];
+Error: accessing element 10 in 10-element array
+
+--> A[-1];
+Error: accessing negative element in 10-element array
+
+How do we change an element of an array? We can use it on the lefthand side of an assignment. We can set A[i] = e; as long as e is an expression of the right type for an array element. For example:
+--> A[0] = 5; A[1] = 10; A[2] = 20;
+
+Recall that an assignment (like A[0] = 5;) is a statement and as such
+has an effect, but no value. Again, exceeding the array bounds will result in an error message
+and the program aborts, because it does not make sense to store data in an
+array at a position that is outside the size of that array.
+--> A[10] = 100;
+Error: accessing element 10 in 10-element array
+
+Using For-Loops to Traverse Arrays
+
+A common pattern of access and traversal of arrays is for-loops, where an
+index i is counted up from 0 to the length of the array. To continue the
+example above, we can assign i^3 to the ith element of the array as follows:
+
+When we use loops to traverse arrays, we need to make sure that all the array accesses are in bounds. In many cases this is evident, but it can be tricky
+in particular if we have two-dimensional data (for example, images). As an
+aid to this reasoning, we state an explicit loop invariant which expresses
+what will be true on every iteration of the loop.
