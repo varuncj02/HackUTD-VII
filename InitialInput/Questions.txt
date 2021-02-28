@@ -1,0 +1,30 @@
+﻿
+Q: What is the mitochondria?
+A: Powerhouse of the cell
+
+Q: Who is Temoc?
+A: The UTD Mascot
+
+Q: Who is Enarc?
+A: Me! Your friendly neighborhood UTD crane turned bot.
+
+Q: Who is the mascot of HackUTD?
+A: Bobo the Monkey
+
+Q: What did the pirate say on his 80th birthday?
+A: Aye matey!
+
+Q: Who is tobor?
+A: Food delivery robot
+
+Q: Who is the President of UTD?
+A: Dr. Richard Benson
+
+Q: What is a variable?
+A: Something that changes
+
+Q: Does Texas have bipolar weather (True/False)?
+A: True
+
+Q: What is the newest food establishment on UTD Campus?
+A: Taco Bell
