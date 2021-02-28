@@ -14,8 +14,10 @@ schedules_list = []
 client = discord.Client()
 
 
+
 @client.event
 async def on_ready():
+  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Comets Soar | $help'))
   print('We have logged in as {0.user}'.format(client))
 
 @client.event
@@ -48,7 +50,7 @@ async def on_message(message):
       newval = val[6:val.find(',')]
       assessment = val[val.find(',')+1:] 
       def check(m):
-        return m.content == 'add' and m.channel == channel
+        return m.content == '$add' and m.channel == channel
       print(val)
       examDate = await client.wait_for('message', check=check)
       sched = Scheduler(newval, assessment) 
@@ -142,5 +144,5 @@ def get_schedule():
     print('Datetime is ', dayInput)
   return dayInput
 
-client.run(("ODE1MzQ4MjcxNjk4MjgwNDQ4.YDrGQA.mVweAv6PGHavxRzvib_taTNGU3c"))
+client.run(("tokens"))
 
