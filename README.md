@@ -9,14 +9,32 @@ Judging Criteria:
      Execution: how well the idea has been pitched and displayed at the booth
      Classroom Impact: how the idea impacts the classroom
  
-Tech Stack:
-Python
+## How To Use
+- Add Enarc Bot to server
+- Use "$help" to view all possible commands
+- Have Fun!
+
+## Tech Stack:
+- Python
+- Discord.py
+- Google Speech to Text API
      
-Discord Bot Features:
-- Scrape Quizlet and have it quiz students - can be gamified into points system
-- Text-to-speech for the questions
+## Discord Bot Features:
+- Speech-to-Text to develop video transcripts
 - Planner/reminder for group meetings
-- Plays chill/lo-fi music
-- Trivia
-- Scheduler - start of every week make a list and get reminders
-- Saves file & notes
+- Quiz Bot using Textual Data
+- Scheduler - Add activites to make a list and get reminders. 
+
+## Future Vision
+
+eLearning/BlackBoard Integration
+- Integrate bot features with BlackBoard API
+
+Scalable NLP/NLU Algorithm
+- Capability to process larger/more complicated files
+
+Class-Based File System
+- Students share notes with classmates 
+- Gamify: Create trivia bot from notes
+
+
